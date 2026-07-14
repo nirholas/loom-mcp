@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center"> 
   <a href="https://three.ws"><img src="https://three.ws/three-ws-mcp-icon.svg" alt="three.ws" width="88" height="88"></a>
 </p>
 
