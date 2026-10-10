@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@three-ws/loom-mcp: Loom</title>
+<meta name="description" content="Loom — the three.ws community 3D-creation gallery from any AI agent. Browse the public feed of community-forged GLB creations, fetch one with its viewer URL, and submit your own. Public API, no key required.">
+<link rel="canonical" href="https://nirholas.github.io/loom-mcp/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="three.ws">
+<meta property="og:title" content="@three-ws/loom-mcp">
+<meta property="og:description" content="Loom — the three.ws community 3D-creation gallery from any AI agent. Browse the public feed of community-forged GLB creations, fetch one with its viewer URL, and submit your own. Public API, no key required.">
+<meta property="og:url" content="https://nirholas.github.io/loom-mcp/">
+<meta property="og:image" content="https://nirholas.github.io/loom-mcp/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="@three-ws/loom-mcp">
+<meta name="twitter:description" content="Loom — the three.ws community 3D-creation gallery from any AI agent. Browse the public feed of community-forged GLB creations, fetch one with its viewer URL, and submit your own. Public API, no key required.">
+<meta name="twitter:image" content="https://nirholas.github.io/loom-mcp/og.png">
+<meta name="keywords" content="mcp, three.ws, 3d, glb, gallery, loom, forge, generative-3d, model-context-protocol, mcp-server, ai-agents">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<link rel="icon" href="https://three.ws/three-ws-mcp-icon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"@three-ws/loom-mcp","description":"Loom — the three.ws community 3D-creation gallery from any AI agent. Browse the public feed of community-forged GLB creations, fetch one with its viewer URL, and submit your own. Public API, no key required.","codeRepository":"https://github.com/nirholas/loom-mcp","programmingLanguage":"JavaScript","license":"https://spdx.org/licenses/Apache-2.0.html","version":"0.1.3","url":"https://nirholas.github.io/loom-mcp/","author":{"@type":"Organization","name":"three.ws","url":"https://three.ws"},"keywords":"mcp, three.ws, 3d, glb, gallery, loom, forge, generative-3d, model-context-protocol, mcp-server, ai-agents"}</script>
+<style>:root{--bg:#fff;--fg:#111418;--mut:#586069;--line:#e3e6ea;--acc:#2563eb;--code:#f4f6f8;--card:#fafbfc}
+@media(prefers-color-scheme:dark){:root{--bg:#0b0d10;--fg:#e8eaed;--mut:#9aa3ad;--line:#232830;--acc:#6ea0ff;--code:#14181d;--card:#10141a}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--acc)}a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+header.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;text-decoration:none;color:var(--fg)}
+.bar nav{margin-left:auto;display:flex;gap:16px;font-size:14px}
+.bar nav a{color:var(--mut);text-decoration:none;transition:color .15s}.bar nav a:hover{color:var(--fg)}
+.hero{max-width:1100px;margin:0 auto;padding:48px 16px 24px}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 12px;letter-spacing:-.02em}
+.hero p{color:var(--mut);max-width:70ch;font-size:18px;margin:0 0 24px}
+.install{display:flex;align-items:center;gap:8px;max-width:620px;background:var(--code);border:1px solid var(--line);border-radius:10px;padding:6px 6px 6px 14px}
+.install code{flex:1;overflow-x:auto;white-space:nowrap;font:14px ui-monospace,SFMono-Regular,Menlo,monospace}
+.install button{border:0;background:var(--acc);color:#fff;border-radius:7px;padding:8px 14px;font:600 13px system-ui;cursor:pointer;transition:transform .12s,opacity .12s}
+.install button:hover{opacity:.9}.install button:active{transform:scale(.96)}
+.cta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.cta a{padding:9px 16px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;color:var(--fg);transition:border-color .15s,transform .15s}
+.cta a:hover{border-color:var(--acc);transform:translateY(-1px)}.cta a.pri{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.layout{max-width:1100px;margin:0 auto;padding:8px 16px 64px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:40px}
+@media(max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+.toc{position:sticky;top:76px;align-self:start;font-size:14px;border-left:1px solid var(--line);padding-left:16px}
+.toc p{margin:0 0 8px;font-weight:700;color:var(--mut);text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+.toc ul{list-style:none;margin:0;padding:0}.toc li{margin:6px 0}.toc a{color:var(--mut);text-decoration:none}.toc a:hover{color:var(--fg)}
+main{min-width:0;overflow-wrap:anywhere}main pre code{overflow-wrap:normal}main img{max-width:100%;height:auto}
+main h2{margin-top:2.2em;padding-bottom:.3em;border-bottom:1px solid var(--line)}
+.anchor{margin-left:-1.1em;padding-right:.4em;text-decoration:none;opacity:0;color:var(--mut)}h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:14px;line-height:1.5}
+code{font:0.9em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:.15em .35em;border-radius:5px}pre code{background:none;padding:0}
+table{border-collapse:collapse;display:block;overflow-x:auto;max-width:100%}th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}th{background:var(--card)}
+blockquote{margin:1em 0;padding:.2em 1em;border-left:4px solid var(--line);color:var(--mut)}
+footer{border-top:1px solid var(--line);color:var(--mut);font-size:14px}
+.foot-in{max-width:1100px;margin:0 auto;padding:24px 16px;display:flex;gap:16px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}</style>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+<a class="brand" href="https://nirholas.github.io/loom-mcp/">@three-ws/loom-mcp</a>
+<nav aria-label="Project links"><a href="https://github.com/nirholas/loom-mcp">GitHub</a><a href="https://www.npmjs.com/package/@three-ws/loom-mcp">npm</a><a href="llms.txt">llms.txt</a><a href="https://three.ws">three.ws</a></nav>
+</div></header>
+<section class="hero">
+<h1>@three-ws/loom-mcp</h1>
+<p>Loom — the three.ws community 3D-creation gallery from any AI agent. Browse the public feed of community-forged GLB creations, fetch one with its viewer URL, and submit your own. Public API, no key required.</p>
+<div class="install" role="group" aria-label="Install command"><code>npx -y @three-ws/loom-mcp</code><button type="button" data-copy="npx -y @three-ws/loom-mcp">Copy</button></div>
+<div class="cta"><a class="pri" href="https://github.com/nirholas/loom-mcp">View on GitHub</a><a href="https://github.com/nirholas/loom-mcp/stargazers">Star the repo</a><a href="https://registry.modelcontextprotocol.io/?q=io.github.nirholas%2Floom-mcp">MCP Registry</a></div>
+</section>
+<div class="layout">
+<main id="content"><p align="center"><strong>Loom — the three.ws community 3D-creation gallery, from any AI agent. Browse the public feed of community-forged GLB creations, fetch one with its viewer URL, and submit your own.</strong></p><p align="center">
+  <a href="https://www.npmjs.com/package/@three-ws/loom-mcp"><img alt="npm" src="https://img.shields.io/npm/v/@three-ws/loom-mcp?logo=npm&color=cb3837"></a>
+  <img alt="license" src="https://img.shields.io/npm/l/@three-ws/loom-mcp?color=3b82f6">
+  <img alt="node" src="https://img.shields.io/node/v/@three-ws/loom-mcp?color=339933&logo=node.js">
+  <a href="https://registry.modelcontextprotocol.io/?q=io.github.nirholas"><img alt="MCP Registry" src="https://img.shields.io/badge/MCP%20Registry-io.github.nirholas-0ea5e9"></a>
+  <a href="https://three.ws"><img alt="three.ws" src="https://img.shields.io/badge/built%20by-three.ws-000"></a>
+</p><hr>
+<blockquote>
+<p>A <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server that exposes <strong>Loom</strong>, the three.ws community 3D-creation gallery, over stdio. Browse what others have forged, pull any creation with a ready-to-embed viewer URL, and contribute your own GLB to the public feed.</p>
+</blockquote>
+<p>Loom closes the loop with the rest of the three.ws 3D suite: forge a model with <a href="https://www.npmjs.com/package/@three-ws/avatar-agent"><code>@three-ws/avatar-agent</code></a> or compose a world with <a href="https://www.npmjs.com/package/@three-ws/scene-mcp"><code>@three-ws/scene-mcp</code></a>, then <strong>publish it here</strong> for the whole platform to see. Every read is live and public; submitting needs no key or account — it is gated server-side only by an IP rate limit.</p>
+<h2 id="install"><a class="anchor" href="#install" aria-label="Link to this section">#</a>Install</h2>
+<pre><code class="language-bash">npm install @three-ws/loom-mcp
+</code></pre>
+<p>Or run with <code>npx</code> (no install):</p>
+<pre><code class="language-bash">npx @three-ws/loom-mcp
+</code></pre>
+<h2 id="quick-start"><a class="anchor" href="#quick-start" aria-label="Link to this section">#</a>Quick start</h2>
+<p><strong>Claude Code</strong>, one line:</p>
+<pre><code class="language-bash">claude mcp add loom -- npx -y @three-ws/loom-mcp
+</code></pre>
+<p><strong>Claude Desktop / Cursor</strong> (<code>claude_desktop_config.json</code> or <code>mcp.json</code>):</p>
+<pre><code class="language-json">{
+	&quot;mcpServers&quot;: {
+		&quot;loom&quot;: {
+			&quot;command&quot;: &quot;npx&quot;,
+			&quot;args&quot;: [&quot;-y&quot;, &quot;@three-ws/loom-mcp&quot;]
+		}
+	}
+}
+</code></pre>
+<p>Inspect the surface with the MCP Inspector:</p>
+<pre><code class="language-bash">npx -y @modelcontextprotocol/inspector npx @three-ws/loom-mcp
+</code></pre>
+<h2 id="tools"><a class="anchor" href="#tools" aria-label="Link to this section">#</a>Tools</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Type</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>get_loom_feed</code></td>
+<td>read-only</td>
+<td>Browse the public gallery of community-forged 3D creations, newest-first, paginated via a <code>nextBefore</code> cursor.</td>
+</tr>
+<tr>
+<td><code>get_creation</code></td>
+<td>read-only</td>
+<td>Fetch one creation by id, with its full metadata and an inline-previewable viewer URL + iframe.</td>
+</tr>
+<tr>
+<td><code>submit_creation</code></td>
+<td>write</td>
+<td>Contribute a forged GLB to the public gallery. No key required; rate-limited (~20/hour per IP).</td>
+</tr>
+</tbody></table>
+<p>Each read returns the creation&#39;s <code>glbUrl</code> plus a <code>viewer_url</code> (the <code>/forge/embed</code> orbit + AR viewer), an <code>og_image_url</code> (social card), and a paste-ready <code>iframe_snippet</code>, so any MCP client can preview the model inline.</p>
+<h3 id="input-parameters"><a class="anchor" href="#input-parameters" aria-label="Link to this section">#</a>Input parameters</h3>
+<p><strong><code>get_loom_feed</code></strong> — <code>limit</code> (1–120, default 60), <code>before</code> (ms-epoch cursor; pass the prior page&#39;s <code>nextBefore</code> to page backwards).</p>
+<p><strong><code>get_creation</code></strong> — <code>id</code> (required — the creation UUID).</p>
+<p><strong><code>submit_creation</code></strong> — <code>prompt</code> (required, ≤1000 chars), <code>glbUrl</code> (required — see allowed hosts below), <code>author</code> (optional attribution, ≤40 chars, defaults to <code>anon</code>), <code>previewImageUrl</code>, <code>tier</code>, <code>backend</code> (all optional).</p>
+<h2 id="submitting-a-creation"><a class="anchor" href="#submitting-a-creation" aria-label="Link to this section">#</a>Submitting a creation</h2>
+<p><code>submit_creation</code> posts to the <strong>public, world-readable</strong> gallery — only submit models you intend to share. There is <strong>no account, key, or signer</strong>: the endpoint is open and gated server-side by an IP rate limit (~20 submissions/hour) plus strict input sanitization. <code>author</code> is <strong>free-text attribution, not an authenticated identity</strong>.</p>
+<p>The <code>glbUrl</code> must be an <strong>https</strong> URL hosted on one of these domains (enforced both client-side here and server-side):</p>
+<p><code>three.ws</code> · <code>r2.dev</code> · <code>cloudflarestorage.com</code> · <code>replicate.delivery</code> · <code>githubusercontent.com</code></p>
+<p>Re-submitting the exact same <code>glbUrl</code> returns the existing creation instead of duplicating it. The dedupe is best-effort by design: it scans only the newest few entries, which is where an accidental re-POST lands. Re-submitting a GLB that has since scrolled down the feed creates a second record.</p>
+<p><code>get_creation</code> answers an id that no longer exists with a typed <strong><code>not_found</code></strong> error rather than an empty creation, so a stale id in a saved reference is unambiguous.</p>
+<h2 id="example"><a class="anchor" href="#example" aria-label="Link to this section">#</a>Example</h2>
+<pre><code class="language-jsonc">// submit_creation
+&gt; {
+    &quot;prompt&quot;: &quot;a cowboy hat, low-poly&quot;,
+    &quot;glbUrl&quot;: &quot;https://three.ws/accessories/hat-cowboy.glb&quot;,
+    &quot;author&quot;: &quot;nova&quot;,
+    &quot;backend&quot;: &quot;hunyuan&quot;
+  }
+{
+  &quot;ok&quot;: true,
+  &quot;creation&quot;: {
+    &quot;id&quot;: &quot;f295398e-2d25-410d-a82f-c8725295a1b3&quot;,
+    &quot;prompt&quot;: &quot;a cowboy hat, low-poly&quot;,
+    &quot;glbUrl&quot;: &quot;https://three.ws/accessories/hat-cowboy.glb&quot;,
+    &quot;author&quot;: &quot;nova&quot;,
+    &quot;createdAt&quot;: 1750000000000,
+    &quot;viewer_url&quot;: &quot;https://three.ws/forge/embed?src=https%3A%2F%2Fthree.ws%2Faccessories%2Fhat-cowboy.glb&amp;title=a+cowboy+hat%2C+low-poly&quot;,
+    &quot;og_image_url&quot;: &quot;https://three.ws/api/avatar-og?src=https%3A%2F%2Fthree.ws%2Faccessories%2Fhat-cowboy.glb&quot;,
+    &quot;iframe_snippet&quot;: &quot;&lt;iframe src=\&quot;https://three.ws/forge/embed?src=…\&quot; width=\&quot;640\&quot; height=\&quot;360\&quot; …&gt;&lt;/iframe&gt;&quot;
+  }
+}
+</code></pre>
+<pre><code class="language-jsonc">// get_loom_feed
+&gt; { &quot;limit&quot;: 2 }
+{ &quot;ok&quot;: true, &quot;count&quot;: 2, &quot;nextBefore&quot;: 1749999000000, &quot;has_more&quot;: true,
+  &quot;creations&quot;: [ { &quot;id&quot;: &quot;…&quot;, &quot;prompt&quot;: &quot;…&quot;, &quot;glbUrl&quot;: &quot;…&quot;, &quot;viewer_url&quot;: &quot;…&quot;, &quot;iframe_snippet&quot;: &quot;…&quot; } ] }
+</code></pre>
+<p>Drop a creation&#39;s <code>iframe_snippet</code> onto any web page, or open its <code>viewer_url</code> to orbit the model (with AR on supported devices).</p>
+<h2 id="examples"><a class="anchor" href="#examples" aria-label="Link to this section">#</a>Examples</h2>
+<p>Runnable examples live in <a href="https://github.com/nirholas/loom-mcp/blob/main/examples"><code>examples/</code></a>:</p>
+<pre><code class="language-bash">node examples/list-tools.mjs     # every tool with its full input schema
+node examples/browse-loom.mjs    # a page of the gallery + one creation&#39;s embed, live
+</code></pre>
+<p>Both spawn this server over stdio and read the live public gallery. They are
+deliberately read-only: <code>submit_creation</code> posts to a world-readable feed, so no
+example writes on your behalf. See <a href="https://github.com/nirholas/loom-mcp/blob/main/examples/README.md"><code>examples/README.md</code></a>
+for expected output.</p>
+<h2 id="requirements"><a class="anchor" href="#requirements" aria-label="Link to this section">#</a>Requirements</h2>
+<ul>
+<li><strong>Node.js &gt;= 20.</strong></li>
+<li>Network access to <code>https://three.ws</code> (or your own <code>THREE_WS_BASE</code>).</li>
+</ul>
+<h3 id="environment-variables"><a class="anchor" href="#environment-variables" aria-label="Link to this section">#</a>Environment variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>THREE_WS_BASE</code></td>
+<td>no</td>
+<td><code>https://three.ws</code></td>
+</tr>
+<tr>
+<td><code>THREE_WS_TIMEOUT_MS</code></td>
+<td>no</td>
+<td><code>20000</code></td>
+</tr>
+</tbody></table>
+<p>No API key, signer, or account is needed for any tool.</p>
+<h2 id="links"><a class="anchor" href="#links" aria-label="Link to this section">#</a>Links</h2>
+<ul>
+<li>Homepage: <a href="https://three.ws">https://three.ws</a></li>
+<li>Forge gallery: <a href="https://three.ws/forge">https://three.ws/forge</a></li>
+<li>Changelog: <a href="https://three.ws/changelog">https://three.ws/changelog</a></li>
+<li>Issues: <a href="https://github.com/nirholas/three.ws/issues">https://github.com/nirholas/three.ws/issues</a></li>
+<li>License: Apache-2.0, see <a href="https://github.com/nirholas/loom-mcp/blob/main/LICENSE">LICENSE</a></li>
+</ul>
+<hr>
+<p align="center">
+  <sub>
+    Part of the <a href="https://three.ws">three.ws</a> SDK suite — 3D AI agents, on-chain identity, and agent payments.<br/>
+    <a href="https://three.ws">Website</a> · <a href="https://three.ws/changelog">Changelog</a> · <a href="https://github.com/nirholas/three.ws">GitHub</a>
+  </sub>
+</p>
+</main>
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#install">Install</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#tools">Tools</a></li><li><a href="#submitting-a-creation">Submitting a creation</a></li><li><a href="#example">Example</a></li><li><a href="#examples">Examples</a></li><li><a href="#requirements">Requirements</a></li><li><a href="#links">Links</a></li></ul></nav>
+</div>
+<footer><div class="foot-in"><span>Apache-2.0 licensed</span><a href="https://github.com/nirholas/loom-mcp/issues">Issues</a><a href="https://github.com/nirholas/loom-mcp/blob/main/CONTRIBUTING.md">Contributing</a><a href="https://github.com/nirholas/loom-mcp/security/policy">Security</a><a href="https://three.ws">Part of three.ws</a></div></footer>
+<script>document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+var t=b.getAttribute('data-copy');var done=function(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1400)};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){})}
+else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}})});</script>
+</body>
+</html>
