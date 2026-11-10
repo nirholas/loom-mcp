@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "loom": {
+      "command": "npx",
+      "args": ["-y", "@three-ws/loom-mcp"],
+      "env": {
+        "THREE_WS_BASE": "${THREE_WS_BASE:-}",
+        "THREE_WS_TIMEOUT_MS": "${THREE_WS_TIMEOUT_MS:-}"
+      }
+    }
+  }
+}
